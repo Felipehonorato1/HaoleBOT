@@ -1,25 +1,40 @@
-#from selenium import webdriver
-from bs4 import BeautifulSoup 
+from selenium import webdriver
 import pandas as pd 
 import requests
 
-url = "https://www.surfguru.com.br/previsao/brasil/paraiba/joao-pessoa?tipo=tabela"
+options = webdriver.ChromeOptions()
+options.add_argument('headless')
 
-html = requests.get(url)
-if html.status_code == 200:
-    print('Requisicao bem sucedida!')
-    content = html.content
+path = "/home/felipe/Documentos/surfproject/chromedriver"
+driver = webdriver.Chrome(path,options=options)
+driver.get("https://www.surfguru.com.br/previsao/brasil/paraiba/joao-pessoa?tipo=tabela")
 
-#path = "/home/felipe/Documentos/surfproject/chromedriver"
-#driver = webdriver.Chrome(path)
-#driver.get("https://www.surfguru.com.br/previsao/brasil/paraiba/joao-pessoa?tipo=tabela")
-#content = driver.page_source
+dias = []
+alturas = []
+periodos = []
+dirs_primarias = []
+nos = []
+dir_vento = []
 
-res = BeautifulSoup(content,"html.parser")
-results = res.find(id="ssat1")
 
-print("Message: {}".format(results.prettify()))
+for i in range(1,7):
+    xpathday = '//*[@id="rotulo_sem_1_{}"]'.format(i)
+    xpathssat = '//*[@id="ssat{}"]'.format(i)
+    xpathsspp = '//*[@id="sspp{}"]'.format(i)
+    xpathssdp = '//*[@id="ssdp{}"]'.format(i)
+    xpathssv1 = '//*[@id="ssv{}"]'.format(i)
+    xpathssd1 = '//*[@id="ssd{}"]'.format(i)
+
+    dias.append(driver.find_element_by_xpath(xpathday).text)
+    alturas.append(driver.find_element_by_xpath(xpathssat).text)
+    periodos.append(driver.find_element_by_xpath(xpathsspp).text)
+    dirs_primarias.append(driver.find_element_by_xpath(xpathssdp).text)
+    nos.append(driver.find_element_by_xpath(xpathssv1).text)
+    dir_vento.append(driver.find_element_by_xpath(xpathssd1).text)
+
 # ids interessados ssat2 sspp2 ssdp2 ssv2 ssd2
-
-
-#df = pd.DataFrame({'Dia ':dia, })
+#//*[@id="rotulo_sem_1_1"]
+#//*[@id="rotulo_sem_1_3"]
+#//*[@id="rotulo_sem_1_2"]
+df = pd.DataFrame({'Dia ':dias, 'Periodos':periodos,'Alturas':alturas,'Nós':nos })
+df.to_csv('mareview.csv',index=False,encoding='utf-8')
