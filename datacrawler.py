@@ -1,13 +1,15 @@
 from selenium import webdriver
 import pandas as pd 
 import requests
+import cv2
+
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 
 path = "/home/felipe/Documentos/surfproject/chromedriver"
 driver = webdriver.Chrome(path,options=options)
-driver.get("https://www.surfguru.com.br/previsao/brasil/paraiba/joao-pessoa?tipo=tabela")
+driver.get("https://www.surfguru.com.br/previsao/brasil/rio-grande-do-norte/baia-formosa?tipo=tabela")
 
 dias = []
 alturas = []
@@ -38,3 +40,6 @@ for i in range(1,7):
 #//*[@id="rotulo_sem_1_2"]
 df = pd.DataFrame({'Dia ':dias, 'Periodos':periodos,'Alturas':alturas,'Nós':nos })
 df.to_csv('mareview.csv',index=False,encoding='utf-8')
+driver.close()
+
+

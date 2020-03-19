@@ -1,7 +1,7 @@
-,Dia ,Periodos,Alturas,Nós
-0,Qui 19,10 a 11,1.2 a 1.3,7 a 8 kt
-1,Sex 20,9 a 10,1.2 a 1.3,6 a 10 kt
-2,Sab 21,9 a 10,1.2 a 1.3,3 a 9 kt
-3,Dom 22,10 a 13,1.2 a 1.5,2 a 10 kt
-4,Seg 23,13 a 16,1.5 a 1.6,5 a 12 kt
-5,Ter 24,12 a 15,1.4 a 1.6,3 a 10 kt
+Dia ,Periodos,Alturas,Nós
+Qui 19,7 a 9,0.8 a 0.9,7 a 10 kt
+Sex 20,8 a 10,0.8 a 0.9,3 a 10 kt
+Sab 21,9,0.8,5 a 7 kt
+Dom 22,9 a 11,0.8 a 0.9,3 a 9 kt
+Seg 23,8 a 12,0.9 a 1,3 a 10 kt
+Ter 24,10 a 12,0.9 a 1,2 a 10 kt
