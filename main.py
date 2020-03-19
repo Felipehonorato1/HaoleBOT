@@ -1,3 +1,5 @@
 from imgsaver import GetImage
 
-GetImage(19,3,2020,'pb')
+GetImage('rn',1)
+GetImage('rn',2)
+GetImage('rn',3)

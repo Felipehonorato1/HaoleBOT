@@ -38,6 +38,7 @@ for i in range(1,7):
 #//*[@id="rotulo_sem_1_1"]
 #//*[@id="rotulo_sem_1_3"]
 #//*[@id="rotulo_sem_1_2"]
+
 df = pd.DataFrame({'Dia ':dias, 'Periodos':periodos,'Alturas':alturas,'Nós':nos })
 df.to_csv('mareview.csv',index=False,encoding='utf-8')
 driver.close()
