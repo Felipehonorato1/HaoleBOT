@@ -6,8 +6,9 @@ from datetime import date
 ## 16 QUADRADOS HORIZONTAIS
 ## 4 VERTICAIS 260X260
 
-def GetImage(estado,prev):
+def GetImage(estado):
     c = 0
+    i = 0
 
     if estado == 'rn':
         estado = 'rnLeste'
@@ -20,17 +21,26 @@ def GetImage(estado,prev):
     img = cv2.imread('raw.png')
 
 
-    start_x = 520*prev
-    end_x = start_x + 260
+    start_x = 0
+    end_x = 260
     start_y = 0
     end_y = 260
+    lista = []
 
-    while end_y <= 1040:
-        cropc = img[start_y:end_y,start_x:end_x]
-        start_y += 260
-        end_y += 260
-        cv2.imwrite('img{}{}{}{}{}.png'.format(estado,dia+prev,mes,ano,c),cropc)
+    while end_x <= 4060:
+        while end_y <= 1040:
+            cropc = img[start_y:end_y,start_x:end_x]
+            lista.append(cropc)
+            cv2.imwrite('img{}{}{}{}{}.png'.format(estado,dia+c,mes,ano,i),cropc)
+            start_y += 260
+            end_y += 260
+            i+=1
         c += 1
+        start_y = 0
+        end_y = 260
+        start_x += 520
+        end_x += 520
 
+    return lista
     
     
