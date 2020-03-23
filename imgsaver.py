@@ -16,7 +16,6 @@ def GetImage(estado):
     ano = int(date.today().year)
     mes = int(date.today().month)
     dia = int(date.today().day)
-
     ulib.urlretrieve('https://surfguru.pictures/mapas/{}{}{:0>2}{}00.png'.format(estado,abs(ano)%100,mes,dia),'raw.png')
     img = cv2.imread('raw.png')
 
@@ -31,6 +30,7 @@ def GetImage(estado):
         while end_y <= 1040:
             cropc = img[start_y:end_y,start_x:end_x]
             lista.append(cropc)
+
             cv2.imwrite('img{}{}{}{}{}.png'.format(estado,dia+c,mes,ano,i),cropc)
             start_y += 260
             end_y += 260
