@@ -1,0 +1,1 @@
+Bot do telegram associado a um data crawler que pode ser adicionado a grupos de surf para emitir previsoes em tempo real. IA ainda será implementada para identificar a existência ou não de um Swell na praia
