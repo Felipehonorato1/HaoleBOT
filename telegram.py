@@ -3,7 +3,7 @@ from imgsaver import GetImage
 from datacrawler import datacrao
 import telepot 
 import sys
-bot = 0
+bot = telepot.Bot('1031484092:AAHfDz4MgkyH3OFbS3qA6HF9GEWqoW4YZyc')
 
 url = "https://api.telegram.org/bot1031484092:AAHfDz4MgkyH3OFbS3qA6HF9GEWqoW4YZyc/"
 
@@ -31,6 +31,8 @@ def sendImg(chat_id,estado):
     
     #path = '/home/felipe/Documentos/surfproject/imgpb2732202017.png'
     fp = open('./imgpb263202014.png','rb')
+    if(fp):
+        print("PELO MENOS EU ABRI A IMAGEM IRMAO")
     params = {"chat_id": chat_id, "photo":fp}
     response = requests.post(url + "sendPhoto", data=params)
     return response
@@ -47,9 +49,9 @@ def main():
                 previsao = datacrao('paraiba','joao pessoa')
                 send_message(get_chat_id(update),'**PREVISAO PORRA**')
                 update_id +=1
-                for i in range(len(previsao)):
+                for i in range(6):
                     send_message(get_chat_id(update),previsao[i])
-                    #bot.sendPhoto(get_chat_id(update),open('/home/felipe/Documentos/surfproject/imgpb263202013.png','rb')
+                    bot.sendPhoto(get_chat_id(update),open('imgpb233{i}.png','rb'))
                     update_id +=1
                     sendImg(get_chat_id,'pb')
                     update_id +=1

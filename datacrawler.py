@@ -11,7 +11,7 @@ def datacrao(estado,cidade):
     driver = webdriver.Chrome(path,options=options)
     for j in range(len(estado)):
         if estado[j] == ' ':
-            estado = estado[:k] + '-' +estado[k+1:]
+            estado = estado[:j] + '-' +estado[j+1:]
     for k in range(len(cidade)):
         if cidade[k] == ' ':
             cidade = cidade[:k] + '-' +cidade[k+1:]
